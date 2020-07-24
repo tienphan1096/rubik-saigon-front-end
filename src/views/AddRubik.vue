@@ -1,6 +1,6 @@
 <template>
   <div class="add-rubik">
-    <b-form @submit="onSubmit">
+    <b-form>
       <b-form-input v-model="name" placeholder="Name"></b-form-input>
       <b-form-input v-model="price" placeholder="Price"></b-form-input>
       <b-form-select
@@ -10,14 +10,13 @@
           <b-form-select-option :value="null" disabled>Loại Rubik</b-form-select-option>
         </template>
       </b-form-select>
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-form-file
+        v-model="image"
+        placeholder="Choose a file or drop it here..."
+        drop-placeholder="Drop file here..."
+      ></b-form-file>
+      <b-button @click="onSubmit" variant="primary">Submit</b-button>
     </b-form>
-    <!-- <b-form-file
-      v-model="file"
-      :state="Boolean(file)"
-      placeholder="Choose a file or drop it here..."
-      drop-placeholder="Drop file here..."
-    ></b-form-file> -->
   </div>
 </template>
 
@@ -31,6 +30,7 @@ export default {
       price: '',
       puzzleType: null,
       puzzleTypes: [],
+      image: null,
     };
   },
   mounted() {
@@ -44,12 +44,16 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$http.post('/puzzle', {
-        name: this.name,
-        price: this.price,
-        type: this.puzzleType,
-      }).then((res) => {
+      const formData = new FormData();
+
+      formData.set('name', this.name);
+      formData.set('price', this.price);
+      formData.set('type', this.puzzleType);
+      formData.set('image', this.image);
+
+      this.$http.post('/puzzle', formData).then((res) => {
         console.log(res);
+        // TODO: do something here
       });
     },
   },
