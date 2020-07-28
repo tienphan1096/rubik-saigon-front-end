@@ -20,23 +20,12 @@ export default {
   },
   methods: {
     onSubmit() {
-      const clientAuth = btoa(`${process.env.VUE_APP_CLIENT_APP}:${process.env.VUE_APP_CLIENT_SECRET}`);
-
-      const params = new URLSearchParams();
-      params.append('grant_type', 'password');
-      params.append('username', this.username);
-      params.append('password', this.password);
-      this.$http.post(
-        '/login',
-        params,
-        {
-          headers: {
-            Authorization: `Basic ${clientAuth}`,
-          },
-        },
-      ).then((res) => {
-        console.log(res);
-      });
+      this.$store.dispatch('logIn', { username: this.username, password: this.password })
+        .then((res) => {
+          this.$http.defaults.headers.common.Authorization = `Bearer ${res.data.accessToken}`;
+        }).catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

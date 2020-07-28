@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <b-container fluid="md">
+    <b-container>
       <b-row>
         <b-col md="3">
           sdff

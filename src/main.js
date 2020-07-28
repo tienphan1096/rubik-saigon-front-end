@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import { BootstrapVue } from 'bootstrap-vue';
-import axios from 'axios';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import http from './axios';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -12,9 +12,7 @@ Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
 
-Vue.prototype.$http = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API_URL,
-});
+Vue.prototype.$http = http;
 
 new Vue({
   router,
