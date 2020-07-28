@@ -25,6 +25,11 @@ const routes = [
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
   },
+  {
+    path: '/rubik/:name',
+    name: 'Puzzle Details',
+    component: () => import(/* webpackChunkName: "puzzle-details") */ '../views/PuzzleDetails.vue'),
+  },
 ];
 
 const router = new VueRouter({
