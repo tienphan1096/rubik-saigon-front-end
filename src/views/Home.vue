@@ -3,7 +3,11 @@
     <b-container>
       <b-row>
         <b-col md="8" offset-md="2" class="my-4">
-          <v-select :options="['Canada', 'United States']"></v-select>
+          <v-select
+            :options="matches" label="name" @search="fetchPuzzles" :filterable="false"
+            :clearSearchOnBlur="clearSearchOnBlur"
+          >
+          </v-select>
         </b-col>
       </b-row>
       <b-row>
@@ -28,9 +32,9 @@
               <b-card no-body @click="cardClick(puzzle.url)" class="mb-5">
                 <b-img :src="puzzle.thumbnail ? `http://localhost:3000${puzzle.thumbnail}` : null" fluid></b-img>
                 <b-card-body>
-                  <b-card-title>{{ puzzle.name }}</b-card-title>
+                  <b-link>{{ puzzle.name }}</b-link>
                   <b-card-text>
-                    {{ puzzle.price }}.000 đ
+                    {{ puzzle.price }} k
                   </b-card-text>
                 </b-card-body>
 
@@ -57,6 +61,7 @@ export default {
   data() {
     return {
       puzzles: [],
+      matches: [],
     };
   },
   mounted() {
@@ -70,12 +75,27 @@ export default {
       console.log(url);
       // TODO: redirect to that puzzle.
     },
+    fetchPuzzles(search, loading) {
+      if (search) {
+        loading(true);
+        this.$http.get('/search', { params: { keywords: search } }).then((results) => {
+          this.matches = results.data;
+          loading(false);
+        });
+      } else {
+        this.matches = [];
+      }
+    },
+    clearSearchOnBlur() {
+      return false;
+    },
   },
 };
 </script>
 
 <style scoped>
-a .card {
-  color: none;
+.card-body a {
+  color: unset;
+  text-decoration: none;
 }
 </style>
