@@ -6,7 +6,7 @@
       class="search-input"
     >
     </v-select>
-    <b-button @click="navigateToSearch">Search</b-button>
+    <b-button @click="navigateToSearch">{{ $t('search') }}</b-button>
   </div>
 </template>
 

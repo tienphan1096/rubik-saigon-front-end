@@ -28,7 +28,7 @@
                 <b-card-body>
                   <b-link :to="`/rubik/${puzzle.url}`">{{ puzzle.name }}</b-link>
                   <b-card-text>
-                    {{ puzzle.price ? `${puzzle.price} k` : 'Liên hệ' }}
+                    {{ puzzle.price ? `${puzzle.price} k` : $t('price.contact') }}
                   </b-card-text>
                 </b-card-body>
 

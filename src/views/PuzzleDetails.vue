@@ -25,12 +25,14 @@
               <h3>{{ puzzle.name }}</h3>
               <table class="info-table">
                 <tr>
-                  <td><h4>Giá:</h4></td>
-                  <td><h4>{{ puzzle.price ? `${puzzle.price} k` : 'Liên hệ' }}</h4></td>
+                  <td><h4>{{ $t('price') }}</h4></td>
+                  <td><h4>{{ puzzle.price ? `${puzzle.price} k` : $t('price.contact') }}</h4></td>
                 </tr>
                 <tr>
-                  <td><h4><small><em>Loại rubik:</em></small></h4></td>
-                  <td><h4><small><em>{{ puzzle.PuzzleType.name }}</em></small></h4></td>
+                  <td><h4><small><em>{{ $t('puzzleType') }}</em></small></h4></td>
+                  <td><h4><small>
+                    <em>{{ $t(`puzzleTypes.${puzzle.PuzzleType.id}`) }}</em>
+                  </small></h4></td>
                 </tr>
               </table>
 

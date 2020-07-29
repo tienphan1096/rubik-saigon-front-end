@@ -17,7 +17,11 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item to="/login">{{ $t("nav.login")}}</b-nav-item>
+            <b-nav-item-dropdown text="Language" right>
+              <b-dropdown-item @click="changeLocale('en')">EN</b-dropdown-item>
+              <b-dropdown-item @click="changeLocale('vi')">VI</b-dropdown-item>
+            </b-nav-item-dropdown>
+            <b-nav-item to="/login">{{ $t("nav.login") }}</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-container>
@@ -25,6 +29,18 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+import i18n from './localization';
+
+export default {
+  methods: {
+    changeLocale(locale) {
+      i18n.locale = locale;
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
