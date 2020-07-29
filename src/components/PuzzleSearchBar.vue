@@ -1,9 +1,13 @@
 <template>
-  <v-select
-    :options="matches" label="name" @search="fetchPuzzles" :filterable="false"
-    :clearSearchOnBlur="clearSearchOnBlur" @input="navigateToPuzzle"
-  >
-  </v-select>
+  <div class="search-bar">
+    <v-select
+      :options="matches" label="name" @search="searchHandler" :filterable="false"
+      :clearSearchOnBlur="clearSearchOnBlur" @input="navigateToPuzzle"
+      class="search-input"
+    >
+    </v-select>
+    <b-button @click="navigateToSearch">Search</b-button>
+  </div>
 </template>
 
 <script>
@@ -20,6 +24,7 @@ export default {
   data() {
     return {
       matches: [],
+      keywords: '',
     };
   },
   methods: {
@@ -34,12 +39,29 @@ export default {
         this.matches = [];
       }
     }, 500),
+    searchHandler(search, loading) {
+      this.keywords = search;
+      this.fetchPuzzles(search, loading);
+    },
     clearSearchOnBlur() {
       return false;
     },
     navigateToPuzzle(selected) {
       this.$router.push({ name: 'Puzzle Details', params: { name: selected.url } });
     },
+    navigateToSearch() {
+      this.$router.push({ name: 'Search', params: { keywords: this.keywords } });
+    },
+
   },
 };
 </script>
+
+<style scoped>
+.search-bar {
+  display: flex;
+}
+.search-input {
+  flex-grow: 1;
+}
+</style>

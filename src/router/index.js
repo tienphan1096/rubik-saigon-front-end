@@ -30,6 +30,11 @@ const routes = [
     name: 'Puzzle Details',
     component: () => import(/* webpackChunkName: "puzzle-details") */ '../views/PuzzleDetails.vue'),
   },
+  {
+    path: '/search/:keywords',
+    name: 'Search',
+    component: () => import(/* webpackChunkName: "search") */ '../views/Search.vue'),
+  },
 ];
 
 const router = new VueRouter({

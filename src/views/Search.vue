@@ -57,10 +57,15 @@ export default {
       puzzles: [],
     };
   },
-  mounted() {
-    this.$http.get('/puzzles').then((results) => {
+  beforeRouteUpdate(to, from, next) {
+    this.$http.get('/search', { params: { keywords: to.params.keywords } }).then((results) => {
       this.puzzles = results.data;
-      console.log(this.puzzles);
+    });
+    next();
+  },
+  mounted() {
+    this.$http.get('/search', { params: { keywords: this.$route.params.keywords } }).then((results) => {
+      this.puzzles = results.data;
     });
   },
   methods: {

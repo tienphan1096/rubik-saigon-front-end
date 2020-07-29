@@ -10,7 +10,7 @@
         <b-col md="3">
           <b-card header="Thông báo">
             <b-card-text>
-              Vì shop không còn quản lý trang rubiksaigon.com nữa,xin quý khách vui lòng vào
+              Vì shop không còn quản lý trang rubiksaigon.com nữa, xin quý khách vui lòng vào
               <span style="font-weight: bold">rubik-saigon.com</span>
               (<span style="font-weight: bold">có dấu gạch nối</span>).
               <br>
