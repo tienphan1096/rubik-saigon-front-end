@@ -8,17 +8,7 @@
       </b-row>
       <b-row>
         <b-col md="3">
-          <b-card
-            :header="$t('announcement.label')"
-            class="text-left"
-          >
-            <i18n path="announcement.content" tag="b-card-text">
-              <span style="font-weight: bold">rubik-saigon.com</span>
-              <span style="font-weight: bold">{{ $t('announcement.disclaimer') }}</span>
-              <br>
-              <br>
-            </i18n>
-          </b-card>
+          <announcement-panel></announcement-panel>
         </b-col>
         <b-col md="9">
           <b-row>
@@ -44,11 +34,13 @@
 
 <script>
 import PuzzleSearchBar from '../components/PuzzleSearchBar.vue';
+import AnnouncementPanel from '../components/AnnouncementPanel.vue';
 
 export default {
   name: 'Home',
   components: {
     'puzzle-search-bar': PuzzleSearchBar,
+    'announcement-panel': AnnouncementPanel,
   },
   data() {
     return {

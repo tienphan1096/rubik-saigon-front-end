@@ -8,19 +8,7 @@
       </b-row>
       <b-row>
         <b-col md="3">
-          <b-card
-            header="Thông báo"
-            class="text-left"
-          >
-            <b-card-text>
-              Vì shop không còn quản lý trang rubiksaigon.com nữa, xin quý khách vui lòng vào
-              <span style="font-weight: bold">rubik-saigon.com</span>
-              (<span style="font-weight: bold">có dấu gạch nối</span>).
-              <br>
-              <br>
-              Rubik-saigon.com chỉ có 1 shop duy nhất tại 300/11 Đội Cung, phường 9, quận 11.
-            </b-card-text>
-          </b-card>
+          <announcement-panel></announcement-panel>
         </b-col>
         <b-col md="9">
           <b-row>
@@ -46,11 +34,13 @@
 
 <script>
 import PuzzleSearchBar from '../components/PuzzleSearchBar.vue';
+import AnnouncementPanel from '../components/AnnouncementPanel.vue';
 
 export default {
   name: 'Home',
   components: {
     'puzzle-search-bar': PuzzleSearchBar,
+    'announcement-panel': AnnouncementPanel,
   },
   data() {
     return {
