@@ -8,14 +8,16 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item to="/">Sản phẩm</b-nav-item>
-            <b-nav-item to="/about">Liên Hệ</b-nav-item>
-            <b-nav-item to="/add-rubik" v-if="$store.state.loggedInUser">Đăng</b-nav-item>
+            <b-nav-item to="/">{{ $t("nav.products")}}</b-nav-item>
+            <b-nav-item to="/about">{{ $t("nav.contact")}}</b-nav-item>
+            <b-nav-item
+              to="/add-rubik" v-if="$store.state.loggedInUser"
+            >{{ $t("nav.addPuzzle")}}</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item to="/login">Log In</b-nav-item>
+            <b-nav-item to="/login">{{ $t("nav.login")}}</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-container>

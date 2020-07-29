@@ -9,17 +9,15 @@
       <b-row>
         <b-col md="3">
           <b-card
-            header="Thông báo"
+            :header="$t('announcement.label')"
             class="text-left"
           >
-            <b-card-text>
-              Vì shop không còn quản lý trang rubiksaigon.com nữa, xin quý khách vui lòng vào
+            <i18n path="announcement.content" tag="b-card-text">
               <span style="font-weight: bold">rubik-saigon.com</span>
-              (<span style="font-weight: bold">có dấu gạch nối</span>).
+              <span style="font-weight: bold">{{ $t('announcement.disclaimer') }}</span>
               <br>
               <br>
-              Rubik-saigon.com chỉ có 1 shop duy nhất tại 300/11 Đội Cung, phường 9, quận 11.
-            </b-card-text>
+            </i18n>
           </b-card>
         </b-col>
         <b-col md="9">
