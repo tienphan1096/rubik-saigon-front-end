@@ -40,6 +40,7 @@ const messages = {
       13: 'Truyền thống big cube',
       14: 'Khác',
     },
+    noPuzzles: 'Mục này chưa có rubik 😅',
   },
   en: {
     nav: {
@@ -50,8 +51,8 @@ const messages = {
     },
     announcement: {
       label: 'Announcement(s)',
-      content: 'Since rubiksaigon.com domain is no longer under our management, '
-      + 'please kindly visit our store at {0} ({1}).{2}{3}Rubik-saigon.com\'s '
+      content: 'Since we no longer manage the rubiksaigon.com domain, '
+      + 'our store\'s been moved to {0} ({1}).{2}{3}Rubik-saigon.com\'s '
       + 'only store is located at 300/11 Đội Cung street, ward 9, district 11, '
       + 'Hồ Chí Minh city.',
       disclaimer: 'with a hyphen',
@@ -61,7 +62,7 @@ const messages = {
       label: 'Price',
       contact: 'Contact us',
     },
-    puzzleType: 'Puzzle type',
+    puzzleType: 'Category',
     puzzleTypes: {
       1: '2x2',
       2: '3x3',
@@ -78,6 +79,7 @@ const messages = {
       13: 'Traditional big cubes',
       14: 'Others',
     },
+    noPuzzles: 'No puzzles found 😅',
   },
 };
 const i18n = new VueI18n({

@@ -8,7 +8,8 @@
       </b-row>
       <b-row>
         <b-col md="3">
-          <announcement-panel></announcement-panel>
+          <announcement-panel class="mb-5"></announcement-panel>
+          <puzzle-category-panel class="mb-5"></puzzle-category-panel>
         </b-col>
         <b-col md="9">
           <puzzle-grid :puzzles="puzzles"></puzzle-grid>
@@ -23,6 +24,7 @@
 import PuzzleSearchBar from '../components/PuzzleSearchBar.vue';
 import AnnouncementPanel from '../components/AnnouncementPanel.vue';
 import PuzzleGrid from '../components/PuzzleGrid.vue';
+import PuzzleCategoryPanel from '../components/PuzzleCategoryPanel.vue';
 
 export default {
   name: 'Home',
@@ -30,6 +32,7 @@ export default {
     'puzzle-search-bar': PuzzleSearchBar,
     'announcement-panel': AnnouncementPanel,
     'puzzle-grid': PuzzleGrid,
+    'puzzle-category-panel': PuzzleCategoryPanel,
   },
   data() {
     return {

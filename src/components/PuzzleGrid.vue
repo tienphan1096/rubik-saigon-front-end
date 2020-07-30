@@ -1,6 +1,9 @@
 <template>
 <div>
   <b-row>
+    <b-col v-if="rows === 0">
+      <h6>{{ $t('noPuzzles') }}</h6>
+    </b-col>
     <b-col lg="4" sm="6" xs="12" v-for="puzzle in puzzlesToDisplay" :key="puzzle.id">
       <b-card no-body @click="cardClick(puzzle.url, $event)" class="mb-5">
         <b-img :src="puzzle.thumbnail ? `http://localhost:3000${puzzle.thumbnail}` : null" fluid></b-img>
@@ -13,13 +16,13 @@
       </b-card>
     </b-col>
   </b-row>
-  <b-row>
+  <b-row v-if="rows > perPage">
     <b-col lg="8" sm="10" xs="12" offset-lg="2" offset-sm="1">
       <b-pagination
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
-        aria-controls="my-table"
+        align="center"
       ></b-pagination>
     </b-col>
   </b-row>

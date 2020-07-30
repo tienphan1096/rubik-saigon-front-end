@@ -27,7 +27,7 @@ import PuzzleGrid from '../components/PuzzleGrid.vue';
 import PuzzleCategoryPanel from '../components/PuzzleCategoryPanel.vue';
 
 export default {
-  name: 'Home',
+  name: 'PuzzleCategory',
   components: {
     'puzzle-search-bar': PuzzleSearchBar,
     'announcement-panel': AnnouncementPanel,
@@ -40,13 +40,13 @@ export default {
     };
   },
   beforeRouteUpdate(to, from, next) {
-    this.$http.get('/search', { params: { keywords: to.params.keywords } }).then((results) => {
+    this.$http.get('/puzzles', { params: { category: to.params.category } }).then((results) => {
       this.puzzles = results.data;
     });
     next();
   },
   mounted() {
-    this.$http.get('/search', { params: { keywords: this.$route.params.keywords } }).then((results) => {
+    this.$http.get('/puzzles', { params: { category: this.$route.params.category } }).then((results) => {
       this.puzzles = results.data;
     });
   },

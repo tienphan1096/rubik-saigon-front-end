@@ -35,6 +35,11 @@ const routes = [
     name: 'Search',
     component: () => import(/* webpackChunkName: "search") */ '../views/Search.vue'),
   },
+  {
+    path: '/category/:category',
+    name: 'Puzzle Category',
+    component: () => import(/* webpackChunkName: "puzzle-category") */ '../views/PuzzleCategory.vue'),
+  },
 ];
 
 const router = new VueRouter({
