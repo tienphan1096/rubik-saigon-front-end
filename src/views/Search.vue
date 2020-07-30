@@ -11,20 +11,7 @@
           <announcement-panel></announcement-panel>
         </b-col>
         <b-col md="9">
-          <b-row>
-            <b-col lg="4" sm="6" xs="12" v-for="puzzle in puzzles" :key="puzzle.id">
-              <b-card no-body @click="cardClick(puzzle.url, $event)" class="mb-5">
-                <b-img :src="puzzle.thumbnail ? `http://localhost:3000${puzzle.thumbnail}` : null" fluid></b-img>
-                <b-card-body>
-                  <b-link :to="`/rubik/${puzzle.url}`">{{ puzzle.name }}</b-link>
-                  <b-card-text>
-                    {{ puzzle.price ? `${puzzle.price} k` : 'Liên hệ' }}
-                  </b-card-text>
-                </b-card-body>
-
-              </b-card>
-            </b-col>
-          </b-row>
+          <puzzle-grid :puzzles="puzzles"></puzzle-grid>
         </b-col>
       </b-row>
 </b-container>
@@ -35,12 +22,14 @@
 <script>
 import PuzzleSearchBar from '../components/PuzzleSearchBar.vue';
 import AnnouncementPanel from '../components/AnnouncementPanel.vue';
+import PuzzleGrid from '../components/PuzzleGrid.vue';
 
 export default {
   name: 'Home',
   components: {
     'puzzle-search-bar': PuzzleSearchBar,
     'announcement-panel': AnnouncementPanel,
+    'puzzle-grid': PuzzleGrid,
   },
   data() {
     return {
@@ -58,19 +47,6 @@ export default {
       this.puzzles = results.data;
     });
   },
-  methods: {
-    cardClick(url, evt) {
-      if (evt.target.tagName.toLowerCase() !== 'a') {
-        this.$router.push({ name: 'Puzzle Details', params: { name: url } });
-      }
-    },
-  },
 };
 </script>
 
-<style scoped>
-.card-body a {
-  color: unset;
-  text-decoration: none;
-}
-</style>
