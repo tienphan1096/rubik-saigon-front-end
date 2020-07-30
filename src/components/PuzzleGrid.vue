@@ -6,7 +6,11 @@
     </b-col>
     <b-col lg="4" sm="6" xs="12" v-for="puzzle in puzzlesToDisplay" :key="puzzle.id">
       <b-card no-body @click="cardClick(puzzle.url, $event)" class="mb-5">
-        <b-img :src="puzzle.thumbnail ? `http://localhost:3000${puzzle.thumbnail}` : null" fluid></b-img>
+        <b-img
+          :src="puzzle.thumbnail ? `${api}${puzzle.thumbnail}` : null"
+          fluid
+        >
+        </b-img>
         <b-card-body>
           <b-link :to="`/rubik/${puzzle.url}`">{{ puzzle.name }}</b-link>
           <b-card-text>
@@ -41,6 +45,9 @@ export default {
       currentPage: 1,
       perPage: 9,
     };
+  },
+  created() {
+    this.api = process.env.VUE_APP_BASE_API_URL;
   },
   computed: {
     rows() {

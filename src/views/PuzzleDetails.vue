@@ -30,7 +30,11 @@
 
               <b-row>
                 <b-col sm="10" offset-sm="1" md="8" offset-mf="2">
-                  <b-img :src="puzzle.imgsrc ? `http://localhost:3000${puzzle.imgsrc}` : null" fluid />
+                  <b-img
+                    :src="puzzle.imgsrc ?
+                    `${api}${puzzle.imgsrc}` : null"
+                    fluid
+                  />
                 </b-col>
               </b-row>
             </b-col>
@@ -58,6 +62,9 @@ export default {
     return {
       puzzle: null,
     };
+  },
+  created() {
+    this.api = process.env.VUE_APP_BASE_API_URL;
   },
   beforeRouteUpdate(to, from, next) {
     this.$http.get('/puzzle', { params: { url: to.params.name } }).then((results) => {
