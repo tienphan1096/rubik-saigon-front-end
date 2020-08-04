@@ -6,11 +6,14 @@
     </b-col>
     <b-col lg="4" sm="6" xs="12" v-for="puzzle in puzzlesToDisplay" :key="puzzle.id">
       <b-card no-body @click="cardClick(puzzle.url, $event)" class="mb-5">
-        <b-img
-          :src="puzzle.thumbnail ? `${api}${puzzle.thumbnail}` : null"
-          fluid
-        >
-        </b-img>
+        <b-aspect aspect="1:1">
+          <div class="img-container">
+            <b-img
+              :src="puzzle.thumbnail ? `${api}${puzzle.thumbnail}` : null"
+            >
+            </b-img>
+          </div>
+        </b-aspect>
         <b-card-body>
           <b-link :to="`/rubik/${puzzle.url}`">{{ puzzle.name }}</b-link>
           <b-card-text>
@@ -74,5 +77,17 @@ export default {
 .card-body a {
   color: unset;
   text-decoration: none;
+}
+.img-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-container img {
+  position: absolute;
+  max-width: 95%;
+  max-height: 95%;
 }
 </style>
