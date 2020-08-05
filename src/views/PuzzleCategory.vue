@@ -12,6 +12,11 @@
           <puzzle-category-panel class="mb-5"></puzzle-category-panel>
         </b-col>
         <b-col md="9">
+          <b-row>
+            <b-col class="text-left mb-4">
+              <h1>{{ $t(`puzzleTypes.${$route.params.category}`)}}</h1>
+            </b-col>
+          </b-row>
           <puzzle-grid :puzzles="puzzles"></puzzle-grid>
         </b-col>
       </b-row>

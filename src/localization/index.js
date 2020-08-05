@@ -5,6 +5,9 @@ Vue.use(VueI18n);
 
 const messages = {
   vi: {
+    newProducts: 'Sản Phẩm Mới',
+    searchResults: 'Tìm kiếm',
+    searchResultsFor: '{0} sản phẩm với từ khoá "{1}"',
     nav: {
       products: 'Sản Phẩm',
       contact: 'Liên Hệ',
@@ -43,6 +46,9 @@ const messages = {
     noPuzzles: 'Mục này chưa có rubik 😅',
   },
   en: {
+    newProducts: 'New Products',
+    searchResults: 'Search',
+    searchResultsFor: 'Showing {0} result(s) for "{1}"',
     nav: {
       products: 'Products',
       contact: 'Contact Us',
