@@ -88,8 +88,9 @@ const messages = {
     noPuzzles: 'No puzzles found 😅',
   },
 };
+
 const i18n = new VueI18n({
-  locale: 'en', // set locale
+  locale: localStorage.lang ? localStorage.lang : 'vi', // set locale
   messages, // set locale messages
 });
 

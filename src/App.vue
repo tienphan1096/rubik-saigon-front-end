@@ -17,7 +17,7 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown text="Language" right>
+            <b-nav-item-dropdown :text="`Language ${flag}`" right>
               <b-dropdown-item @click="changeLocale('en')">EN</b-dropdown-item>
               <b-dropdown-item @click="changeLocale('vi')">VI</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -34,9 +34,29 @@
 import i18n from './localization';
 
 export default {
+  data() {
+    return {
+      flag: null,
+    };
+  },
+  mounted() {
+    this.flag = this.getFlag(i18n.locale);
+  },
   methods: {
     changeLocale(locale) {
+      localStorage.lang = locale;
       i18n.locale = locale;
+      this.flag = this.getFlag(locale);
+    },
+    getFlag(locale) {
+      switch (locale) {
+        case 'vi':
+          return '🇻🇳';
+        case 'en':
+          return '🇺🇸';
+        default:
+          return '🇻🇳';
+      }
     },
   },
 };
