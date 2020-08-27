@@ -9,7 +9,7 @@ const messages = {
     searchResults: 'Tìm kiếm',
     searchResultsFor: '{0} sản phẩm với từ khoá "{1}"',
     nav: {
-      products: 'Sản Phẩm',
+      categories: 'Loại Rubik',
       contact: 'Liên Hệ',
       addPuzzle: 'Đăng Sản Phẩm',
       login: 'Đăng Nhập',
@@ -44,13 +44,14 @@ const messages = {
       14: 'Khác',
     },
     noPuzzles: 'Mục này chưa có rubik 😅',
+    loading: 'Đợi mình tí...',
   },
   en: {
     newProducts: 'New Products',
     searchResults: 'Search',
     searchResultsFor: 'Showing {0} result(s) for "{1}"',
     nav: {
-      products: 'Products',
+      categories: 'Puzzle Categories',
       contact: 'Contact Us',
       addPuzzle: 'Add Puzzle',
       login: 'Login',
@@ -86,6 +87,7 @@ const messages = {
       14: 'Others',
     },
     noPuzzles: 'No puzzles found 😅',
+    loading: 'Fetching puzzles...',
   },
 };
 

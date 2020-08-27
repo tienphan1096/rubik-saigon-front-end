@@ -9,7 +9,6 @@
       <b-row>
         <b-col md="3">
           <announcement-panel class="mb-5"></announcement-panel>
-          <puzzle-category-panel class="mb-5"></puzzle-category-panel>
         </b-col>
         <b-col md="9">
           <b-row>
@@ -20,7 +19,7 @@
               </h5>
             </b-col>
           </b-row>
-          <puzzle-grid :puzzles="puzzles"></puzzle-grid>
+          <puzzle-grid :puzzles="puzzles" :loading="loading"></puzzle-grid>
         </b-col>
       </b-row>
 </b-container>
@@ -32,7 +31,6 @@
 import PuzzleSearchBar from '../components/PuzzleSearchBar.vue';
 import AnnouncementPanel from '../components/AnnouncementPanel.vue';
 import PuzzleGrid from '../components/PuzzleGrid.vue';
-import PuzzleCategoryPanel from '../components/PuzzleCategoryPanel.vue';
 
 export default {
   name: 'Home',
@@ -40,22 +38,27 @@ export default {
     'puzzle-search-bar': PuzzleSearchBar,
     'announcement-panel': AnnouncementPanel,
     'puzzle-grid': PuzzleGrid,
-    'puzzle-category-panel': PuzzleCategoryPanel,
   },
   data() {
     return {
       puzzles: [],
+      loading: true,
     };
   },
   beforeRouteUpdate(to, from, next) {
+    this.loading = true;
     this.$http.get('/search', { params: { keywords: to.params.keywords } }).then((results) => {
       this.puzzles = results.data;
+    }).finally(() => {
+      this.loading = false;
     });
     next();
   },
   mounted() {
     this.$http.get('/search', { params: { keywords: this.$route.params.keywords } }).then((results) => {
       this.puzzles = results.data;
+    }).finally(() => {
+      this.loading = false;
     });
   },
 };
