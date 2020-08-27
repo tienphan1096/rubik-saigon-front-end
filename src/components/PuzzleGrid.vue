@@ -1,38 +1,45 @@
 <template>
 <div>
-  <b-row>
-    <b-col v-if="rows === 0">
-      <h6>{{ $t('noPuzzles') }}</h6>
-    </b-col>
-    <b-col lg="4" sm="6" xs="12" v-for="puzzle in puzzlesToDisplay" :key="puzzle.id">
-      <b-card no-body @click="cardClick(puzzle.url, $event)" class="mb-5">
-        <b-aspect aspect="1:1">
-          <div class="img-container">
-            <b-img
-              :src="puzzle.thumbnail ? `${api}${puzzle.thumbnail}` : null"
-            >
-            </b-img>
-          </div>
-        </b-aspect>
-        <b-card-body>
-          <b-link :to="`/rubik/${puzzle.url}`">{{ puzzle.name }}</b-link>
-          <b-card-text>
-            {{ puzzle.price ? `${puzzle.price} k` : $t('price.contact') }}
-          </b-card-text>
-        </b-card-body>
-      </b-card>
+  <b-row v-if="loading">
+    <b-col>
+      <h6>{{ $t('loading') }}</h6>
     </b-col>
   </b-row>
-  <b-row v-if="rows > perPage">
-    <b-col lg="8" sm="10" xs="12" offset-lg="2" offset-sm="1">
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="rows"
-        :per-page="perPage"
-        align="center"
-      ></b-pagination>
-    </b-col>
-  </b-row>
+  <div v-else>
+    <b-row>
+      <b-col v-if="rows === 0">
+        <h6>{{ $t('noPuzzles') }}</h6>
+      </b-col>
+      <b-col lg="4" cols="6" v-for="puzzle in puzzlesToDisplay" :key="puzzle.id">
+        <b-card no-body @click="cardClick(puzzle.url, $event)" class="mb-5">
+          <b-aspect aspect="1:1">
+            <div class="img-container">
+              <b-img
+                :src="puzzle.thumbnail ? `${api}${puzzle.thumbnail}` : null"
+              >
+              </b-img>
+            </div>
+          </b-aspect>
+          <b-card-body>
+            <b-link :to="`/rubik/${puzzle.url}`">{{ puzzle.name }}</b-link>
+            <b-card-text>
+              {{ puzzle.price ? `${puzzle.price} k` : $t('price.contact') }}
+            </b-card-text>
+          </b-card-body>
+        </b-card>
+      </b-col>
+    </b-row>
+    <b-row v-if="rows > perPage">
+      <b-col lg="8" sm="10" xs="12" offset-lg="2" offset-sm="1">
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          align="center"
+        ></b-pagination>
+      </b-col>
+    </b-row>
+  </div>
 </div>
 </template>
 
@@ -42,6 +49,7 @@ export default {
   name: 'PuzzleGrid',
   props: {
     puzzles: Array,
+    loading: Boolean,
   },
   data() {
     return {

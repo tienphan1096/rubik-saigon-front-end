@@ -9,7 +9,6 @@
       <b-row>
         <b-col md="3">
           <announcement-panel class="mb-5"></announcement-panel>
-          <puzzle-category-panel class="mb-5"></puzzle-category-panel>
         </b-col>
         <b-col md="9">
           <b-row>
@@ -49,14 +48,12 @@
 <script>
 import PuzzleSearchBar from '../components/PuzzleSearchBar.vue';
 import AnnouncementPanel from '../components/AnnouncementPanel.vue';
-import PuzzleCategoryPanel from '../components/PuzzleCategoryPanel.vue';
 
 export default {
   name: 'PuzzleDetails',
   components: {
     'puzzle-search-bar': PuzzleSearchBar,
     'announcement-panel': AnnouncementPanel,
-    'puzzle-category-panel': PuzzleCategoryPanel,
   },
   data() {
     return {

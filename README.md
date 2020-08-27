@@ -1,5 +1,8 @@
 # rubik-saigon-front-end
 
+## Check out the project live at rubik-saigon.com
+This repo is the Vue front end. Data is served by rubik-saigon-back-end.
+
 ## Project setup
 ```
 npm install

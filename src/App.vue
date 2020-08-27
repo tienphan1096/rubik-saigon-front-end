@@ -8,7 +8,11 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item to="/">{{ $t("nav.products")}}</b-nav-item>
+            <b-nav-item-dropdown :text="$t('nav.categories')">
+              <b-dropdown-item v-for="category in categories" :key="category.id"
+                :to="`/category/${category.id}`"
+                >{{ $t(`puzzleTypes.${category.id}`) }}</b-dropdown-item>
+            </b-nav-item-dropdown>
             <b-nav-item to="/about">{{ $t("nav.contact")}}</b-nav-item>
             <b-nav-item
               to="/add-rubik" v-if="$store.state.loggedInUser"
@@ -37,10 +41,14 @@ export default {
   data() {
     return {
       flag: null,
+      categories: [],
     };
   },
   mounted() {
     this.flag = this.getFlag(i18n.locale);
+    this.$http.get('/puzzle-types').then((results) => {
+      this.categories = results.data;
+    });
   },
   methods: {
     changeLocale(locale) {
